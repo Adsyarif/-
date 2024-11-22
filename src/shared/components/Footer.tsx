@@ -3,7 +3,7 @@ import { Facebook, Instagram, Twitter } from "lucide-react";
 const Footer = () => {
   return (
     <div className="bg-black px-4 pt-[75px] pb-[32px] md:px-8 w-full md:flex md:flex-col md:justify-center md:items-center">
-      <div className="flex flex-col gap-16 md:grid md:grid-cols-2 md:gap-24 lg:flex lg:flex-row lg:justify-between ">
+      <div className="flex flex-col gap-16 md:grid md:grid-cols-2 md:gap-24 lg:flex lg:flex-row lg:justify-between">
         <div className="flex flex-col gap-4">
           <p className="text-white font-bold text-md mb-4">CATEGORIES</p>
           <p className="text-gray-300 text-sm ">Women</p>
