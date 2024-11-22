@@ -21,12 +21,12 @@ const Header = () => {
               </button>
             </div>
             <aside
-              className={`text-sm fixed top-16 left-0 w-1/2 lg:hidden ${
+              className={`text-sm fixed top-16 left-0 w-1/2 border-r shadow-xl lg:hidden ${
                 isOpen ? "block" : "hidden"
               }`}
             >
               <div className="bg-white p-4 flex flex-col justify-between">
-                <ul className="flex flex-col gap-2">
+                <ul className="flex flex-col gap-6">
                   <li>
                     <a href="#" className="text-gray-800 hover:text-gray-600">
                       Shop
@@ -92,7 +92,7 @@ const Header = () => {
             </div>
           </div>
         </nav>
-        <div className="flex items-center justify-end ">
+        <div className="flex items-center justify-end border-b">
           <div className="flex items-center p-1 md:p-3 border-r">
             <Search className="w-4 text-gray-500" />
             <input

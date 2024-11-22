@@ -29,7 +29,7 @@ const HomePage = () => {
 
   return (
     <>
-      {/* <div className="categories-container">
+      <div className="categories-container my-20">
         {categories.map((category) => (
           <div className="category-container">
             {<img />}
@@ -39,7 +39,7 @@ const HomePage = () => {
             </div>
           </div>
         ))}
-      </div> */}
+      </div>
     </>
   );
 };
