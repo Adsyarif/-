@@ -9,10 +9,10 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-white fixed w-full top-0 z-50 border-b">
-      <div className="flex justify-between flex-col md:flex-row md:items-center">
-        <nav className="px-4 py-2 md:py-3 md:w-3/4 border-b md:border-none">
-          <div className="flex items-center justify-between gap-2 md:gap-0 md:justify-start ">
+    <header className="bg-white fixed w-full top-0 z-50 border-b lg:flex lg:justify-center">
+      <div className="flex justify-between flex-col md:flex-row md:items-center xl:w-1/2">
+        <nav className="px-4 py-2 md:py-3 md:w-3/4 border-b md:border-none lg:px-0">
+          <div className="flex items-center gap-2 md:gap-4">
             <div className="lg:hidden">
               <button className="text-xl" onClick={handleMenu}>
                 <span className="block w-6 h-0.5 bg-gray-800 mb-1"></span>
@@ -56,7 +56,7 @@ const Header = () => {
                 </ul>
               </div>
             </aside>
-            <div className="flex items-center justify-self-start min-w-24 md:ml-[55px] lg:mr-[55px] lg:justify-start">
+            <div className="flex items-center min-w-24 md:mr-[55px] lg:justify-start">
               <img src="./logo.png" alt="Logo" className="w-24" />
             </div>
             <div className="hidden lg:flex mx-4 space-x-6 justify-self-end text-sm">
