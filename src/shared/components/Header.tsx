@@ -9,9 +9,9 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-white fixed w-full top-0 z-50 ">
+    <header className="bg-white fixed w-full top-0 z-50 border-b">
       <div className="flex justify-between flex-col md:flex-row md:items-center">
-        <nav className="px-4 py-2 border-b md:py-3 md:w-3/4 ">
+        <nav className="px-4 py-2 md:py-3 md:w-3/4 border-b md:border-none">
           <div className="flex items-center justify-between gap-2 md:gap-0 md:justify-start ">
             <div className="lg:hidden">
               <button className="text-xl" onClick={handleMenu}>
@@ -92,7 +92,7 @@ const Header = () => {
             </div>
           </div>
         </nav>
-        <div className="flex items-center justify-end border-b">
+        <div className="flex items-center justify-end ">
           <div className="flex items-center p-1 md:p-3 border-r">
             <Search className="w-4 text-gray-500" />
             <input

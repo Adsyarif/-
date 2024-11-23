@@ -8,7 +8,7 @@ interface MainLayoutProps {
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
-    <div className="font-sans overflow-hidden">
+    <div className="font-sans overflow-hidden m-auto">
       <Header />
       <main>{children}</main>
       <Footer />
