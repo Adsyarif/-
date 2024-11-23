@@ -9,8 +9,8 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-white fixed w-full top-0 z-50 border-b lg:flex lg:justify-center">
-      <div className="flex justify-between flex-col md:flex-row md:items-center xl:w-1/2">
+    <header className="bg-white fixed w-full top-0 z-50 border-b">
+      <div className="flex justify-between flex-col md:flex-row md:items-center">
         <nav className="px-4 py-2 md:py-3 md:w-3/4 border-b md:border-none lg:px-0">
           <div className="flex items-center gap-2 md:gap-4">
             <div className="lg:hidden">
@@ -56,7 +56,7 @@ const Header = () => {
                 </ul>
               </div>
             </aside>
-            <div className="flex items-center min-w-24 md:mr-[55px] lg:justify-start">
+            <div className="flex items-center min-w-24 md:mr-[55px] lg:ml-[55px] 2xl:justify-start">
               <img src="./logo.png" alt="Logo" className="w-24" />
             </div>
             <div className="hidden lg:flex mx-4 space-x-6 justify-self-end text-sm">
