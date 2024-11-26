@@ -1,70 +1,120 @@
 import { Heart, Search, ShoppingBag, UserRound } from "lucide-react";
+import { useState } from "react";
 
 const Header = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const handleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <header className="bg-white shadow-md">
-      <div className="flex items-center justify-between margin-auto py-3 px-8">
-        <nav className="flex items-center justify-between gap-16">
-          <div className="flex items-center justify-self-start mr-[55px]">
-            <img src="./logo.png" alt="Logo" className="w-24" />
-          </div>
+    <header className="bg-white fixed w-full top-0 z-50 border-b">
+      <div className="flex justify-between flex-col md:flex-row md:items-center">
+        <nav className="px-4 py-2 md:py-3 md:w-3/4 border-b md:border-none lg:px-0">
+          <div className="flex items-center gap-2 md:gap-4">
+            <div className="lg:hidden">
+              <button className="text-xl" onClick={handleMenu}>
+                <span className="block w-6 h-0.5 bg-gray-800 mb-1"></span>
+                <span className="block w-6 h-0.5 bg-gray-800 mb-1"></span>
+                <span className="block w-6 h-0.5 bg-gray-800"></span>
+              </button>
+            </div>
+            <aside
+              className={`text-sm fixed top-16 left-0 w-1/2 border-r shadow-xl lg:hidden ${
+                isOpen ? "block" : "hidden"
+              }`}
+            >
+              <div className="bg-white p-4 flex flex-col justify-between">
+                <ul className="flex flex-col gap-6">
+                  <li>
+                    <a href="#" className="text-gray-800 hover:text-gray-600">
+                      Shop
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" className="text-gray-800 hover:text-gray-600">
+                      Pages
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/blog"
+                      className="text-gray-800 hover:text-gray-600"
+                    >
+                      Blog
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/contact"
+                      className="text-gray-800 hover:text-gray-600"
+                    >
+                      Contact
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </aside>
+            <div className="flex items-center min-w-24 md:mr-[55px] lg:ml-[55px] 2xl:justify-start">
+              <img src="./logo.png" alt="Logo" className="w-24" />
+            </div>
+            <div className="hidden lg:flex mx-4 space-x-6 justify-self-end text-sm">
+              <ul className="flex space-x-6">
+                <li className="group">
+                  <a href="#" className="text-gray-800 hover:text-gray-600">
+                    Shop
+                  </a>
+                </li>
 
-          {/* Menu */}
-          <div className="hidden lg:flex mx-4 space-x-6 justify-self-end text-sm">
-            <ul className="flex space-x-6">
-              {/* Shop Dropdown */}
-              <li className="relative group">
-                <a href="#" className="text-gray-800 hover:text-gray-600">
-                  Shop
-                </a>
-              </li>
-
-              {/* Pages Dropdown */}
-              <li className="relative group">
-                <a href="#" className="text-gray-800 hover:text-gray-600">
-                  Pages
-                </a>
-              </li>
-
-              {/* Blog */}
-              <li>
-                <a
-                  href="blog.html"
-                  className="text-gray-800 hover:text-gray-600"
-                >
-                  Blog
-                </a>
-              </li>
-
-              {/* Contact */}
-              <li>
-                <a
-                  href="contact.html"
-                  className="text-gray-800 hover:text-gray-600"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
+                <li className="group">
+                  <a href="#" className="text-gray-800 hover:text-gray-600">
+                    Pages
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="blog.html"
+                    className="text-gray-800 hover:text-gray-600"
+                  >
+                    Blog
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="contact.html"
+                    className="text-gray-800 hover:text-gray-600"
+                  >
+                    Contact
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </nav>
-
-        {/* Header Meta Section */}
-        <div className="flex items-center space-x-4">
-          {/* Search */}
-          <div className="relative">
+        <div className="flex items-center justify-end ">
+          <div className="flex items-center p-1 md:p-3 border-r">
+            <Search className="w-4 text-gray-500" />
             <input
               type="search"
               name="search"
               id="headerSearch"
               placeholder="Type for search"
+              className="p-2 w-36 text-gray-700 text-sm focus:outline-none focus:ring-0"
+            />
+          </div>
+          <div className="p-3 md:p-4">
+            <a href="#" className="text-gray-800 hover:text-gray-600 ">
+              <Heart />
+            </a>
+          </div>
+          <div className="border-r border-l p-3 md:p-5">
               className="border p-2 rounded-lg text-gray-700 text-sm"
             />
             <button className="absolute right-0 top-0 p-2 text-gray-500">
               <Search />
             </button>
           </div>
-
           {/* Favourite */}
           <div>
             <a href="#" className="text-gray-800 hover:text-gray-600">
@@ -82,17 +132,8 @@ const Header = () => {
               <ShoppingBag />
             </a>
           </div>
-
-          {/* User Login */}
-          <div className="cursor-pointer">
+          <div className="cursor-pointer border-r border-l p-3 md:p-5">
             <UserRound className="text-gray-800 hover:text-gray-600 " />
-          </div>
-          <div className="lg:hidden ml-4">
-            <button className="text-xl">
-              <span className="block w-6 h-0.5 bg-gray-800 mb-1"></span>
-              <span className="block w-6 h-0.5 bg-gray-800 mb-1"></span>
-              <span className="block w-6 h-0.5 bg-gray-800"></span>
-            </button>
           </div>
         </div>
       </div>

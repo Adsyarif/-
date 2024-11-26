@@ -8,7 +8,7 @@ interface MainLayoutProps {
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
-    <div className="font-sans w-full">
+    <div className="font-sans mt-7 pt-16 md:mt-0">
       <Header />
       <main>{children}</main>
       <Footer />
