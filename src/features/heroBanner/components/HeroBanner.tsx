@@ -1,6 +1,13 @@
 const HeroBanner = () => {
   return (
-    <div className="flex p-4 items-center justify-center bg-[url('./bg-1.jpg')] bg-center w-full h-[350px] object-cover bg-cover md:h-[450px] lg:h-[600px] lg:bg-no-repeat">
+    <div
+      className="flex p-4 items-center justify-center w-full h-[350px] md:h-[450px] lg:h-[600px] "
+      style={{
+        backgroundImage: `url(/bg-1.jpg)`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       <div className="p-4 w-full xl:p-28 xl:w-3/4">
         <div className="flex flex-col gap-6 items-start">
           <p>Brand</p>
