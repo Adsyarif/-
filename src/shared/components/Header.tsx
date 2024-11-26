@@ -109,6 +109,21 @@ const Header = () => {
             </a>
           </div>
           <div className="border-r border-l p-3 md:p-5">
+              className="border p-2 rounded-lg text-gray-700 text-sm"
+            />
+            <button className="absolute right-0 top-0 p-2 text-gray-500">
+              <Search />
+            </button>
+          </div>
+          {/* Favourite */}
+          <div>
+            <a href="#" className="text-gray-800 hover:text-gray-600">
+              <Heart />
+            </a>
+          </div>
+
+          {/* Cart */}
+          <div>
             <a
               href="#"
               id="essenceCartBtn"
