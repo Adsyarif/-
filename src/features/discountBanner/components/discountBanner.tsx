@@ -1,6 +1,6 @@
 const DiscountBanner = () => {
   return (
-    <div className="px-4 w-full flex justify-center">
+    <div className="px-4 w-full flex justify-center pb-[32px]">
       <div className="flex justify-between items-center p-4 w-full h-96 bg-[url(/bg-5.jpg)] bg-center bg-no-repeat bg-cover md:h-[550px] xl:w-3/4">
         <div className="w-1/2 lg:w-7/12"></div>
         <div className="w-1/2 flex flex-col items-end md:items-start xl:w-5/12">

@@ -20,7 +20,7 @@ const CategoryGrid = () => {
               <div className="absolute w-1/2 flex items-center justify-center hover:text-blue-700">
                 <div
                   key={category.id}
-                  className="bg-white bg-opacity-50 border border-black p-4 w-1/2 flex justify-center items-center md:w-full hover:bg-opacity-80"
+                  className="bg-white bg-opacity-50 border border-gray-600 p-4 w-1/2 flex justify-center items-center md:w-full hover:bg-opacity-80"
                 >
                   <h2 className="text-2xl font-bold p-2 lg:text-lg">
                     {category.title}
