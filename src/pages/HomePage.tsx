@@ -41,6 +41,7 @@ const HomePage = () => {
   return (
     <>
       <div className="flex flex-col justify-center mt-7 pt-16 pb-[32px] md:mt-0">
+        {/* Feature hero banner */}
         <div className="flex p-4 items-center justify-center bg-[url('./bg-1.jpg')] bg-center w-full h-[350px] object-cover bg-cover md:h-[450px] lg:h-[600px] lg:bg-no-repeat">
           <div className="p-4 w-full xl:p-28 xl:w-3/4">
             <div className="flex flex-col gap-6 items-start">
@@ -52,36 +53,39 @@ const HomePage = () => {
             </div>
           </div>
         </div>
+
+        {/* Feature Category */}
         <div className="flex items-center justify-center w-full">
-          <div className="py-20 w-full flex flex-wrap justify-center">
-            {categories.map((category) => {
-              console.log(category.imgUrl);
-              return (
-                <>
-                  <div className="w-full md:w-1/3 md:h-[240px] lg:px-4 xl:w-[350px]">
+          <div className="py-20 w-full flex flex-wrap justify-center xl:w-3/4">
+            {categories.map((category) => (
+              <>
+                <div className=" relative flex justify-center items-center w-full overflow-hidden  h-[180px]  md:h-[240px] md:m-4 lg:w-[210px] md:w-[300px] lg:h-[180px]">
+                  <div
+                    className={`cursor-pointer transition-transform ease-in-out flex justify-center object-cover items-center container w-full h-full hover:scale-110`}
+                    style={{
+                      backgroundImage: `url(${category.imgUrl})`,
+                      backgroundSize: "cover",
+                      backgroundPosition: "center",
+                    }}
+                  >
+                    <div className="w-full h-full bg-white bg-opacity-60"></div>
+                  </div>
+                  <div className="absolute w-1/2 flex items-center justify-center hover:text-blue-700">
                     <div
-                      className={`flex justify-center items-center container w-full h-[180px] md:w-[300px]`}
-                      style={{
-                        backgroundImage: `url(${category.imgUrl})`,
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                      }}
+                      key={category.id}
+                      className="bg-white bg-opacity-60 border border-black p-4 w-1/2 flex justify-center items-center md:w-full"
                     >
-                      <div
-                        key={category.id}
-                        className="bg-white w-full h-full flex items-center justify-center bg-opacity-60"
-                      >
-                        <h2 className="text-2xl font-bold cursor-pointer hover:text-[#0315ff]">
-                          {category.title}
-                        </h2>
-                      </div>
+                      <h2 className="text-2xl font-bold p-2 lg:text-lg">
+                        {category.title}
+                      </h2>
                     </div>
                   </div>
-                </>
-              );
-            })}
+                </div>
+              </>
+            ))}
           </div>
         </div>
+        {/* Feature Discount Sale */}
         <div className="px-4 w-full flex justify-center">
           <div className="flex justify-between items-center p-4 w-full h-96 bg-[url(/bg-5.jpg)] bg-center bg-no-repeat bg-cover md:h-[550px] xl:w-3/4">
             <div className="w-1/2 lg:w-7/12"></div>
@@ -102,6 +106,8 @@ const HomePage = () => {
             </div>
           </div>
         </div>
+
+        {/* Feature top product */}
       </div>
     </>
   );
