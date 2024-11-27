@@ -1,5 +1,6 @@
 import { Heart, Search, ShoppingBag, UserRound } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -56,9 +57,11 @@ const Header = () => {
                 </ul>
               </div>
             </aside>
-            <div className="flex items-center min-w-24 md:mr-[55px] lg:ml-[55px] 2xl:justify-start">
-              <img src="./logo.png" alt="Logo" className="w-24" />
-            </div>
+            <Link to={"/"}>
+              <div className="flex items-center min-w-24 md:mr-[55px] lg:ml-[55px] 2xl:justify-start">
+                <img src="./logo.png" alt="Logo" className="w-24" />
+              </div>
+            </Link>
             <div className="hidden lg:flex mx-4 space-x-6 justify-self-end text-sm">
               <ul className="flex space-x-6">
                 <li className="group">
