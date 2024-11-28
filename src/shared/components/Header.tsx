@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isLogin, setIsLogin] = useState<boolean>(false);
 
   const handleMenu = () => {
     setIsOpen(!isOpen);
@@ -43,7 +44,7 @@ const Header = () => {
                       href="/blog"
                       className="text-gray-800 hover:text-gray-600"
                     >
-                      Blog
+                      Register
                     </a>
                   </li>
                   <li>
@@ -51,7 +52,7 @@ const Header = () => {
                       href="/contact"
                       className="text-gray-800 hover:text-gray-600"
                     >
-                      Contact
+                      Login
                     </a>
                   </li>
                 </ul>
@@ -120,9 +121,27 @@ const Header = () => {
               <ShoppingBag />
             </a>
           </div>
-          <div className="cursor-pointer border-r border-l p-3 md:p-5">
-            <UserRound className="text-gray-800 hover:text-gray-600 " />
-          </div>
+          {isLogin ? (
+            <div className="cursor-pointer border-r border-l p-3 md:p-5">
+              <UserRound className="text-gray-800 hover:text-gray-600 " />
+            </div>
+          ) : (
+            <>
+              <div className="cursor-pointer border-r border-l p-3 md:p-5">
+                <Link
+                  to="/register"
+                  className="text-gray-800 hover:text-gray-600"
+                >
+                  Register
+                </Link>
+              </div>
+              <div className="cursor-pointer border-r border-l p-3 md:p-5">
+                <Link to="/login" className="text-gray-800 hover:text-gray-600">
+                  Login
+                </Link>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </header>
