@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Twitter } from "lucide-react";
+import Input from "./atomic/input";
 
 const Footer = () => {
   return (
@@ -31,14 +32,12 @@ const Footer = () => {
           </div>
         </div>
         <div className="flex flex-col gap-4">
-          <p className="text-white font-bold text-md">NEWSLETTER</p>
-          <div className="relative group">
-            <input
-              className="text-gray-300 bg-black text-sm py-2 border-b border-gray-300 w-full focus:outline-none "
-              placeholder="email@example.com"
-            />
-            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#717FE0] transition-all duration-500 group-focus-within:w-full"></span>
-          </div>
+          <Input
+            name={"NEWSLETTER"}
+            type={"email"}
+            placeholder="email@example.com"
+            themes={"footer"}
+          />
           <button className="text-gray-300 text-sm bg-[#717FE0] w-[179px] p-3 rounded-full font-bold">
             SUBSCRIBE
           </button>
