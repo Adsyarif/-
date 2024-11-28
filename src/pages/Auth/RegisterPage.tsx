@@ -1,11 +1,23 @@
+import { ChevronLeft } from "lucide-react";
 import AuthLayout from "../../layouts/AuthLayout";
 import Input from "../../shared/components/atomic/input";
+import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    navigate(-1);
+  };
   return (
     <AuthLayout>
       <div className="p-8 border shadow-lg gap-6 flex flex-col w-full md:w-1/2 max-w-[480px] bg-white bg-opacity-85">
+        <div className="flex gap-2 items-center" onClick={handleBack}>
+          <ChevronLeft />
+          <p>Back</p>
+        </div>
         <h1 className="text-center text-2xl">SIGN UP!</h1>
+
         <div>
           <h2 className="text-xl">Fell the best experience!</h2>
           <p>Choose your style here!</p>
