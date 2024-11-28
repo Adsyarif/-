@@ -3,7 +3,7 @@ import AuthLayout from "../../layouts/AuthLayout";
 import Input from "../../shared/components/atomic/input";
 import { Link, useNavigate } from "react-router-dom";
 
-const RegisterPage = () => {
+const LoginPage = () => {
   const navigate = useNavigate();
 
   const handleBack = () => {
@@ -19,28 +19,27 @@ const RegisterPage = () => {
           <ChevronLeft />
           <p>Back</p>
         </div>
-        <h1 className="text-center text-2xl">SIGN UP!</h1>
+        <h1 className="text-center text-2xl">LOGIN!</h1>
 
         <div>
-          <h2 className="text-xl">Fell the best experience!</h2>
-          <p>Set up your account here!</p>
+          <h2 className="text-xl">Welcome Back!</h2>
+          <p>Input your account here!</p>
         </div>
         <form action="submit">
           <div className="flex flex-col justify-center gap-6">
-            <Input name={"username"} type={"text"} themes={"auth"} />
             <Input name={"email"} type={"email"} themes={"auth"} />
             <Input name={"password"} type={"password"} themes={"auth"} />
             <div className="flex items-center gap-3">
               <input type="checkbox" />
-              <p>I agree to privacy policy & terms.</p>
+              <p>Remember me</p>
             </div>
             <button type="submit" className="bg-blue-500 p-4 mt-2 text-white">
               Sign up
             </button>
             <p className="text-center">
-              Already have an account?{" "}
+              New on our platform?{" "}
               <span className="text-blue-700">
-                <Link to={"/login"}>Sign in instead</Link>
+                <Link to={"/register"}>Create an account</Link>
               </span>
               .
             </p>
@@ -51,4 +50,4 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default LoginPage;
