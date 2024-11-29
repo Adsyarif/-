@@ -2,9 +2,22 @@ import { ChevronLeft } from "lucide-react";
 import AuthLayout from "../../layouts/AuthLayout";
 import Input from "../../shared/components/atomic/input";
 import { Link, useNavigate } from "react-router-dom";
+import {
+  signInWithGooglePopUp,
+  signInWithFacebookPopUp,
+  createUserDocumentFromAuth,
+} from "../../utils/firebase";
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const logGoogleUser = async () => {
+    const response = await signInWithGooglePopUp();
+    console.log(response);
+  };
+  const logFacebookUser = async () => {
+    const response = await signInWithFacebookPopUp();
+    createUserDocumentFromAuth(response.user);
+  };
 
   const handleBack = () => {
     navigate("/");
@@ -19,7 +32,7 @@ const LoginPage = () => {
           <ChevronLeft />
           <p>Back</p>
         </div>
-        <h1 className="text-center text-2xl">LOGIN!</h1>
+        <h1 className="text-center text-2xl">Sign In!</h1>
 
         <div>
           <h2 className="text-xl">Welcome Back!</h2>
@@ -34,7 +47,7 @@ const LoginPage = () => {
               <p>Remember me</p>
             </div>
             <button type="submit" className="bg-blue-500 p-4 mt-2 text-white">
-              Sign up
+              Sign in
             </button>
             <p className="text-center">
               New on our platform?{" "}
@@ -45,6 +58,21 @@ const LoginPage = () => {
             </p>
           </div>
         </form>
+        <div className="relative flex items-center justify-center w-full h-9">
+          <div className=" bg-black w-full h-[0.1px]"></div>
+          <div className="absolute z-100 top-1 right-1/2 translate-x-1/2">
+            <p className="bg-white mx-auto px-4">or</p>
+          </div>
+        </div>
+        <button className="bg-black text-white p-3" onClick={logGoogleUser}>
+          Sign in with Google
+        </button>
+        <button
+          className="bg-blue-700 text-white p-3"
+          onClick={logFacebookUser}
+        >
+          Sign in with Facebook
+        </button>
       </div>
     </AuthLayout>
   );
