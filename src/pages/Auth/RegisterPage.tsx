@@ -2,6 +2,7 @@ import { ChevronLeft } from "lucide-react";
 import AuthLayout from "../../layouts/AuthLayout";
 import Input from "../../shared/components/atomic/input";
 import { Link, useNavigate } from "react-router-dom";
+
 import { useState } from "react";
 import {
   createAuthUserWithEmailAndPassword,
@@ -90,6 +91,7 @@ const RegisterPage = () => {
           <h2 className="text-xl">Fell the best experience!</h2>
           <p>Set up your account here!</p>
         </div>
+
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col justify-center gap-6">
             <Input

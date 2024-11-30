@@ -2,6 +2,7 @@ import { ChevronLeft } from "lucide-react";
 import AuthLayout from "../../layouts/AuthLayout";
 import Input from "../../shared/components/atomic/input";
 import { Link, useNavigate } from "react-router-dom";
+
 import {
   signInWithGooglePopUp,
   createUserDocumentFromAuth,
@@ -14,6 +15,7 @@ const LoginPage = () => {
     const userDocRef = await createUserDocumentFromAuth(user);
     console.log(userDocRef);
   };
+
 
   const handleBack = () => {
     navigate("/");
@@ -29,7 +31,6 @@ const LoginPage = () => {
           <p>Back</p>
         </div>
         <h1 className="text-center text-2xl">Sign In!</h1>
-
         <div>
           <h2 className="text-xl">Welcome Back!</h2>
           <p>Input your account here!</p>
