@@ -2,10 +2,9 @@
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
-  signInWithRedirect,
   signInWithPopup,
   GoogleAuthProvider,
-  FacebookAuthProvider,
+  User,
 } from "firebase/auth";
 
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
@@ -30,27 +29,20 @@ googleProvider.setCustomParameters({
   prompt: "select_account",
 });
 
-const facebookProvider = new FacebookAuthProvider();
-facebookProvider.setCustomParameters({
-  prompt: "select_account",
-});
-
 export const auth = getAuth();
-export const signInWithGooglePopUp = () =>
-  signInWithPopup(auth, googleProvider);
-export const signInWithFacebookPopUp = () =>
-  signInWithPopup(auth, facebookProvider);
+export const signInWithGooglePopUp = async () =>
+  await signInWithPopup(auth, googleProvider);
 
 export const db = getFirestore();
 
-interface UserAuthProps {
+export interface UserAuthProps {
   uid: string;
   displayName: string;
   email: string;
 }
 
-export const createUserDocumentFromAuth = async (userAuth: UserAuthProps) => {
-  const userDocRef = doc(db, "users", userAuth.uid);
+export const createUserDocumentFromAuth = async (userAuth: User) => {
+  const userDocRef = doc(db, "users", userAuth?.uid);
 
   const userSnapshot = await getDoc(userDocRef);
 

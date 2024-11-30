@@ -4,7 +4,6 @@ import Input from "../../shared/components/atomic/input";
 import { Link, useNavigate } from "react-router-dom";
 import {
   signInWithGooglePopUp,
-  signInWithFacebookPopUp,
   createUserDocumentFromAuth,
 } from "../../utils/firebase";
 
@@ -14,9 +13,6 @@ const LoginPage = () => {
     const { user } = await signInWithGooglePopUp();
     const userDocRef = await createUserDocumentFromAuth(user);
     console.log(userDocRef);
-  };
-  const logFacebookUser = async () => {
-    // const { user } = await signInWithFacebookPopUp();
   };
 
   const handleBack = () => {
@@ -66,12 +62,6 @@ const LoginPage = () => {
         </div>
         <button className="bg-black text-white p-3" onClick={logGoogleUser}>
           Sign in with Google
-        </button>
-        <button
-          className="bg-blue-700 text-white p-3"
-          onClick={logFacebookUser}
-        >
-          Sign in with Facebook
         </button>
       </div>
     </AuthLayout>
