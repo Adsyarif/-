@@ -11,12 +11,12 @@ import {
 const LoginPage = () => {
   const navigate = useNavigate();
   const logGoogleUser = async () => {
-    const response = await signInWithGooglePopUp();
-    console.log(response);
+    const { user } = await signInWithGooglePopUp();
+    const userDocRef = await createUserDocumentFromAuth(user);
+    console.log(userDocRef);
   };
   const logFacebookUser = async () => {
-    const response = await signInWithFacebookPopUp();
-    createUserDocumentFromAuth(response.user);
+    // const { user } = await signInWithFacebookPopUp();
   };
 
   const handleBack = () => {
