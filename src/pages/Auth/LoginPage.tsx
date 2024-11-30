@@ -3,8 +3,19 @@ import AuthLayout from "../../layouts/AuthLayout";
 import Input from "../../shared/components/atomic/input";
 import { Link, useNavigate } from "react-router-dom";
 
+import {
+  signInWithGooglePopUp,
+  createUserDocumentFromAuth,
+} from "../../utils/firebase";
+
 const LoginPage = () => {
   const navigate = useNavigate();
+  const logGoogleUser = async () => {
+    const { user } = await signInWithGooglePopUp();
+    const userDocRef = await createUserDocumentFromAuth(user);
+    console.log(userDocRef);
+  };
+
 
   const handleBack = () => {
     navigate("/");
@@ -19,8 +30,7 @@ const LoginPage = () => {
           <ChevronLeft />
           <p>Back</p>
         </div>
-        <h1 className="text-center text-2xl">LOGIN!</h1>
-
+        <h1 className="text-center text-2xl">Sign In!</h1>
         <div>
           <h2 className="text-xl">Welcome Back!</h2>
           <p>Input your account here!</p>
@@ -34,7 +44,7 @@ const LoginPage = () => {
               <p>Remember me</p>
             </div>
             <button type="submit" className="bg-blue-500 p-4 mt-2 text-white">
-              Sign up
+              Sign in
             </button>
             <p className="text-center">
               New on our platform?{" "}
@@ -45,6 +55,15 @@ const LoginPage = () => {
             </p>
           </div>
         </form>
+        <div className="relative flex items-center justify-center w-full h-9">
+          <div className=" bg-black w-full h-[0.1px]"></div>
+          <div className="absolute z-100 top-1 right-1/2 translate-x-1/2">
+            <p className="bg-white mx-auto px-4">or</p>
+          </div>
+        </div>
+        <button className="bg-black text-white p-3" onClick={logGoogleUser}>
+          Sign in with Google
+        </button>
       </div>
     </AuthLayout>
   );
