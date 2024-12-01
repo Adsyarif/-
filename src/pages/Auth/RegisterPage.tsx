@@ -1,14 +1,15 @@
 import { ChevronLeft } from "lucide-react";
 import AuthLayout from "../../layouts/AuthLayout";
-import Input from "../../shared/components/atomic/input";
+import Input from "../../shared/elements/Input";
 import { Link, useNavigate } from "react-router-dom";
-
+import { Eye, EyeOff } from "react-feather";
 import { useState } from "react";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "./../../utils/firebase";
 import { FirebaseError } from "firebase/app";
+import { Button } from "../../shared/elements";
 
 interface FormFieldsProps {
   username: string;
@@ -25,6 +26,12 @@ const defaultFormFields: FormFieldsProps = {
 const RegisterPage = () => {
   const [formFields, setFormFields] =
     useState<FormFieldsProps>(defaultFormFields);
+  const [isAgree, setIsAgree] = useState<boolean>(false);
+  const [isFilled, setIsFilled] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const hiddenPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   const { username, email, password } = formFields;
 
@@ -40,6 +47,7 @@ const RegisterPage = () => {
       ...prev,
       [name]: value,
     }));
+    checkFilledForm(formFields);
   };
 
   const resetFormFields = () => {
@@ -75,6 +83,20 @@ const RegisterPage = () => {
     }
   };
 
+  const checkPolicyAgreement = () => {
+    setIsAgree(!isAgree);
+  };
+
+  const checkFilledForm = ({ username, email, password }: FormFieldsProps) => {
+    if (
+      username.trim() !== "" &&
+      email.trim() !== "" &&
+      password.trim() !== ""
+    ) {
+      setIsFilled(true);
+    } else setIsFilled(false);
+  };
+
   return (
     <AuthLayout>
       <div className="p-8 border shadow-lg gap-6 flex flex-col w-full md:w-1/2 max-w-[480px] bg-white bg-opacity-85">
@@ -88,8 +110,8 @@ const RegisterPage = () => {
         <h1 className="text-center text-2xl">SIGN UP!</h1>
 
         <div>
-          <h2 className="text-xl">Fell the best experience!</h2>
-          <p>Set up your account here!</p>
+          <h2 className="text-xl">Don't have an account?</h2>
+          <p>Sign up with your email and password</p>
         </div>
 
         <form onSubmit={handleSubmit}>
@@ -110,21 +132,33 @@ const RegisterPage = () => {
               value={email}
               onChange={handleChange}
             />
-            <Input
-              name={"password"}
-              type={"password"}
-              themes={"auth"}
-              require={true}
-              value={password}
-              onChange={handleChange}
-            />
+            <div className="relative">
+              <Input
+                type={`${showPassword ? "text" : "password"}`}
+                name={"password"}
+                themes={"auth"}
+                require
+                value={password}
+                onChange={handleChange}
+              />
+              <div
+                onClick={hiddenPassword}
+                className="absolute right-3 top-1/4 transform-y-1/2 cursor-pointer z-20"
+              >
+                {showPassword ? <Eye /> : <EyeOff />}
+              </div>
+            </div>
             <div className="flex items-center gap-3">
-              <input type="checkbox" />
+              <input type="checkbox" onClick={checkPolicyAgreement} />
               <p>I agree to privacy policy & terms.</p>
             </div>
-            <button type="submit" className="bg-blue-500 p-4 mt-2 text-white">
-              Sign up
-            </button>
+            <Button
+              isActive={isAgree && isFilled ? true : false}
+              title={"Sign up"}
+              themes={"auth"}
+              disabled={isAgree && isFilled ? false : true}
+              type="submit"
+            />
             <p className="text-center">
               Already have an account?{" "}
               <span className="text-blue-700">
