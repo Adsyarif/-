@@ -1,5 +1,6 @@
 import { Facebook, Instagram, Twitter } from "lucide-react";
-import Input from "./atomic/input";
+import Input from "./elements/Input";
+import { Button } from "./elements";
 
 const Footer = () => {
   return (
@@ -38,9 +39,7 @@ const Footer = () => {
             placeholder="email@example.com"
             themes={"footer"}
           />
-          <button className="text-gray-300 text-sm bg-[#717FE0] w-[179px] p-3 rounded-full font-bold">
-            SUBSCRIBE
-          </button>
+          <Button type={"button"} title={"Subscribe"} themes={"footer"} />
         </div>
       </div>
       <div className="text-gray-500 text-xs mt-16 text-center">
