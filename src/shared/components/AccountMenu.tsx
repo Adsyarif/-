@@ -4,6 +4,7 @@ import MenuList from "../elements/MenuList";
 import UserDetailHeader from "../../features/userDetail/components/UserDetailHeader";
 import { Button } from "../elements";
 import { UserContext } from "../../contexts/userContext";
+import { signOutuser } from "../../utils/firebase";
 
 const menuList = [
   { id: 1, title: "Profile", url: "/shop" },
@@ -18,7 +19,8 @@ const ProfileMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleSignOut = () => {
+  const handleSignOut = async () => {
+    await signOutuser();
     setCurrentUser(undefined);
   };
   return (
