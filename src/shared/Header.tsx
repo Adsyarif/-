@@ -1,4 +1,4 @@
-import { Heart, Search, ShoppingBag, UserRound } from "lucide-react";
+import { Heart, Search, ShoppingBag } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../contexts/userContext";

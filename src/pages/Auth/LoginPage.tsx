@@ -13,7 +13,6 @@ import { useContext, useState } from "react";
 import { Button } from "../../shared/elements";
 import { FirebaseError } from "firebase/app";
 import { UserContext } from "../../contexts/userContext";
-import { UserCredential } from "firebase/auth";
 
 interface LoginFormFieldsProps {
   email: string;
