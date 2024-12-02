@@ -1,6 +1,5 @@
-
 import { homePageFeatures } from "../features/featureMap";
-import MainLayout from "../layouts/MainLayout";
+import MainLayout from "../layouts/MainPageLayout";
 
 const HomePage = () => {
   const { HeroBanner, CategoryGrid, DiscountBanner } = homePageFeatures;

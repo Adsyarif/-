@@ -1,5 +1,5 @@
 import { ChevronLeft } from "lucide-react";
-import AuthLayout from "../../layouts/AuthLayout";
+import AuthLayout from "../../layouts/AuthPageLayout";
 import Input from "../../shared/elements/Input";
 import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "react-feather";
@@ -9,9 +9,11 @@ import {
   createUserDocumentFromAuth,
   signInAuthUserWithEmailAndPassword,
 } from "../../utils/firebase";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Button } from "../../shared/elements";
 import { FirebaseError } from "firebase/app";
+import { UserContext } from "../../contexts/userContext";
+import { UserCredential } from "firebase/auth";
 
 interface LoginFormFieldsProps {
   email: string;
@@ -25,6 +27,7 @@ const defaultLoginFormFields: LoginFormFieldsProps = {
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const { setCurrentUser } = useContext(UserContext);
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [formFields, setFormFields] = useState<LoginFormFieldsProps>(
     defaultLoginFormFields
@@ -35,6 +38,8 @@ const LoginPage = () => {
   const logGoogleUser = async () => {
     const { user } = await signInWithGooglePopUp();
     await createUserDocumentFromAuth(user);
+    setCurrentUser(user);
+    navigate("/");
   };
 
   const { email, password } = formFields;
@@ -64,13 +69,15 @@ const LoginPage = () => {
     e.preventDefault();
 
     try {
-      const response = await signInAuthUserWithEmailAndPassword(
+      const { user } = await signInAuthUserWithEmailAndPassword(
         email,
         password
       );
-      if (response) {
+      if (user) {
         resetFormFields(defaultLoginFormFields);
         setError("");
+        setCurrentUser(user);
+        navigate("/");
       }
     } catch (error) {
       if (error instanceof FirebaseError) {
