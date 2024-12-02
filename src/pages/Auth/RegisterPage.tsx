@@ -1,15 +1,16 @@
 import { ChevronLeft } from "lucide-react";
-import AuthLayout from "../../layouts/AuthLayout";
+import AuthLayout from "../../layouts/AuthPageLayout";
 import Input from "../../shared/elements/Input";
 import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "react-feather";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
 } from "./../../utils/firebase";
 import { FirebaseError } from "firebase/app";
 import { Button } from "../../shared/elements";
+import { UserContext } from "../../contexts/userContext";
 
 interface FormFieldsProps {
   username: string;
@@ -24,6 +25,7 @@ const defaultFormFields: FormFieldsProps = {
 };
 
 const RegisterPage = () => {
+  const { setCurrentUser } = useContext(UserContext);
   const [formFields, setFormFields] =
     useState<FormFieldsProps>(defaultFormFields);
   const [isAgree, setIsAgree] = useState<boolean>(false);
@@ -60,16 +62,18 @@ const RegisterPage = () => {
     e.preventDefault();
 
     try {
-      const response = await createAuthUserWithEmailAndPassword(
+      const { user } = await createAuthUserWithEmailAndPassword(
         email,
         password
       );
 
-      if (response) {
-        await createUserDocumentFromAuth(response.user, {
+      if (user) {
+        await createUserDocumentFromAuth(user, {
           displayName: username,
         });
+        setCurrentUser(user);
         resetFormFields();
+        navigate("/");
       }
     } catch (error: unknown) {
       if (
