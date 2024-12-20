@@ -1,12 +1,12 @@
 // temporal default values
 
-export interface category {
+export interface Category {
   id: number;
   title: string;
   imgUrl: string;
 }
 
-export const categories: category[] = [
+export const categories: Category[] = [
   {
     id: 1,
     title: "Hats",

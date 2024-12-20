@@ -6,6 +6,7 @@ const menuList = [
   { id: 2, title: "Category", url: "/shop" },
   { id: 3, title: "Blog", url: "/shop" },
   { id: 4, title: "Contact", url: "/shop" },
+  { id: 5, title: "Shop", url: "/shop" },
 ];
 
 const HamburgerMenu = () => {

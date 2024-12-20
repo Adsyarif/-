@@ -1,10 +1,10 @@
-import { categories, category } from "../hooks/useCategory";
+import { categories, Category } from "../hooks/useCategory";
 
 const CategoryGrid = () => {
   return (
     <div className="flex items-center justify-center w-full">
       <div className="py-20 w-full flex flex-wrap justify-center xl:w-3/4">
-        {categories.map((category: category) => (
+        {categories.map((category: Category) => (
           <div
             key={category.id}
             className=" relative flex justify-center items-center w-full overflow-hidden  h-[180px]  md:h-[240px] md:m-4 lg:w-[210px] md:w-[300px] lg:h-[180px]"

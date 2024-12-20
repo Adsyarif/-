@@ -32,13 +32,13 @@ const Header = () => {
               <ul className="flex space-x-6">
                 <li className="group">
                   <a href="#" className="text-gray-800 hover:text-gray-600">
-                    Shop
+                    About
                   </a>
                 </li>
 
                 <li className="group">
                   <a href="#" className="text-gray-800 hover:text-gray-600">
-                    Pages
+                    Category
                   </a>
                 </li>
                 <li>
@@ -56,6 +56,14 @@ const Header = () => {
                   >
                     Contact
                   </a>
+                </li>
+                <li>
+                  <Link
+                    to="/shop"
+                    className="text-gray-800 hover:text-gray-600"
+                  >
+                    Shop
+                  </Link>
                 </li>
               </ul>
             </div>
