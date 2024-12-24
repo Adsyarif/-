@@ -1,11 +1,34 @@
 import MainLayout from "../layouts/MainPageLayout";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ProductsContext } from "../contexts/productContext";
 import { ArrowUpDown, SlidersHorizontal } from "lucide-react";
 import { categories, Category } from "../features/categories/hooks/useCategory";
 
 const Shop = () => {
   const { products } = useContext(ProductsContext);
+  const defaultSelected = categories.reduce((acc, category: Category) => {
+    acc[category.title] = false;
+    return acc;
+  }, {} as Record<string, boolean>);
+  const [isSelected, setIsSelected] = useState(defaultSelected);
+
+  const toggleFilter = (e: React.MouseEvent<HTMLParagraphElement>): void => {
+    const { id } = e.target as HTMLParagraphElement;
+
+    setIsSelected((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
+
+  const resetFilters = () => {
+    setIsSelected(
+      Object.keys(defaultSelected).reduce((acc, key) => {
+        acc[key] = false;
+        return acc;
+      }, {} as Record<string, boolean>)
+    );
+  };
 
   return (
     <MainLayout>
@@ -16,12 +39,23 @@ const Shop = () => {
           </div>
           <div className="flex w-full items-center justify-between mb-12">
             <div className="flex gap-2 overflow-x-scroll scrollbar-hidden justify-start items-center text-sm">
-              <p className="rounded bg-[#717FE0] text-white p-1 min-w-24 text-center">
+              <p
+                className="rounded bg-white border border-[#717FE0] text-black p-1 min-w-24 text-center cursor-pointer"
+                onClick={resetFilters}
+              >
                 All Product
               </p>
               {categories.map((category: Category) => (
                 <div key={category.id}>
-                  <p className="rounded bg-[#717FE0] text-white p-1 px-2 text-center">
+                  <p
+                    id={category.title}
+                    className={`${
+                      isSelected[category.title]
+                        ? "bg-[#717FE0] text-white"
+                        : "bg-white text-black"
+                    } rounded p-1 px-2 text-center cursor-pointer`}
+                    onClick={toggleFilter}
+                  >
                     {category.title}
                   </p>
                 </div>
@@ -42,11 +76,12 @@ const Shop = () => {
                 <div
                   key={product.id}
                   className="flex flex-col justify-center items-center"
+                  id={product.name}
                 >
                   <div className="w-48 h-64 p-3 shadow-sm bg-white md:w-64 md:h-full">
-                    <div className="w-full h-48 relative group md:h-80">
+                    <div className="w-full h-48 overflow-hidden relative group md:h-80">
                       <div
-                        className="w-full h-full"
+                        className="w-full h-full object-cover items-center container transition-all ease-in-out duration-500 group-hover:scale-110"
                         style={{
                           backgroundImage: `url(${product.imageUrl})`,
                           backgroundSize: "cover",

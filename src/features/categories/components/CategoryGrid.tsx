@@ -7,7 +7,7 @@ const CategoryGrid = () => {
         {categories.map((category: Category) => (
           <div
             key={category.id}
-            className=" relative flex justify-center items-center w-full overflow-hidden  h-[180px]  md:h-[240px] md:m-4 lg:w-[210px] md:w-[300px] lg:h-[180px]"
+            className=" relative flex justify-center items-center w-full overflow-hidden h-[180px]  md:h-[240px] md:m-4 lg:w-[210px] md:w-[300px] lg:h-[180px]"
           >
             <div
               className={`cursor-pointer transition-transform ease-in-out flex justify-center object-cover items-center container w-full h-full hover:scale-110`}
