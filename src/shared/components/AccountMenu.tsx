@@ -24,11 +24,13 @@ const ProfileMenu = () => {
     setCurrentUser(undefined);
   };
   return (
-    <div
-      className="relative cursor-pointer border-r border-l p-3 md:p-5"
-      onClick={handleMenu}
-    >
-      <UserRound className="text-gray-800 hover:text-gray-600 " />
+    <>
+      <div
+        className="relative cursor-pointer border-r border-l p-3 md:p-5"
+        onClick={handleMenu}
+      >
+        <UserRound className="text-gray-800 hover:text-gray-600 " />
+      </div>
       <aside
         className={`text-sm bg-white fixed top-14 translate-y-11 right-0 w-3/4 border-t shadow-xl flex min-h-1/4 md:w-1/2 md:top-8 md:translate-y-8 lg:w-1/4 ${
           isOpen ? "block" : "hidden"
@@ -50,7 +52,7 @@ const ProfileMenu = () => {
           </div>
         </div>
       </aside>
-    </div>
+    </>
   );
 };
 export default ProfileMenu;
