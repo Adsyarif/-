@@ -25,6 +25,12 @@ const Header = () => {
   const openCart = () => setIsCartOpen(!isCartOpen);
 
   useEffect(() => {
+    if (products) {
+      setIsActive;
+    }
+  }, [isActive]);
+
+  useEffect(() => {
     if (currentUser) {
       setIsLogin(true);
     } else {
@@ -104,14 +110,14 @@ const Header = () => {
             className="border-r border-l p-3 cursor-pointer md:p-5"
             onClick={openCart}
           >
-            <div className="text-gray-800 hover:text-gray-600 flex items-center">
+            <div className="text-gray-800 hover:text-blue-300 flex items-center">
               <ShoppingBag />
             </div>
           </div>
           {isCartOpen && (
             <>
               <div className="fixed top-[103px] w-full h-screen bg-black opacity-20 md:top-16"></div>
-              <aside className="fixed top-[103px] md:top-16 right-0 w-full md:w-1/2 lg:w-1/3 xl:w-1/4 bg-white shadow-lg">
+              <aside className="fixed top-[103px] md:top-[65px] right-0 w-full md:w-1/2 lg:w-1/3 xl:w-1/4 bg-white shadow-lg">
                 <div className="p-6 space-y-4">
                   <div className="flex justify-between items-center">
                     <h1 className="font-bold text-lg">Your Cart</h1>
@@ -122,7 +128,7 @@ const Header = () => {
                       <X className="w-5" />
                     </button>
                   </div>
-                  <div className="h-80 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300">
+                  <div className="h-80 overflow-y-auto scrollbar-circular scrollbar-thumb-gray-300">
                     {products && products.length > 0 ? (
                       products.map((product) => (
                         <div
@@ -140,6 +146,11 @@ const Header = () => {
                               {product.name}
                             </p>
                             <p className="text-sm text-gray-600">2 x Rp.1000</p>
+                            <Circle
+                              size={15}
+                              className="fill-red-400"
+                              strokeWidth={0}
+                            />
                           </div>
                           <div className="flex items-center space-x-2">
                             <Minus className="w-4 cursor-pointer text-gray-500 hover:text-blue-500" />
