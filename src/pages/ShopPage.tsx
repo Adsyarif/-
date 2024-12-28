@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { ProductsContext } from "../contexts/productContext";
 import {
   ArrowUpDown,
+  Circle,
   Heart,
   Plus,
   ShoppingBag,
@@ -93,6 +94,11 @@ const Shop = () => {
                     <button className="rounded-full opacity-0 bg-white hover:bg-gray-800 hover:text-white hover:cursor-pointer p-2 absolute -bottom-1 group-hover:opacity-100 group-hover:bottom-5 right-1/2 translate-x-1/2 duration-300 transition-all">
                       Quick View
                     </button>
+                    <Circle
+                      className="cursor-pointer absolute bottom-2 right-2 -translate-x-2 duration-300 transition-all fill-red-500"
+                      strokeWidth={0}
+                      size={20}
+                    />
                   </div>
                   <div className="p-4 flex justify-between">
                     <div>
