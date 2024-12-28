@@ -70,7 +70,7 @@ const Shop = () => {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-2 grid-flow-row w-full gap-3 md:gap-5 md:grid-cols-3 lg:grid-cols-4 ">
+          <div className="grid grid-cols-2 grid-flow-row  w-full gap-3 md:gap-5 md:grid-cols-3 lg:grid-cols-4">
             {products && products.length > 0 ? (
               products.map((product) => (
                 <div
